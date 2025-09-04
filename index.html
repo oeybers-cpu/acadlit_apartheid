@@ -4,285 +4,490 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apartheid and Academic Literacy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --dark-blue: #0a192f;
-            --digital-purple: #8338ec;
-            --turquoise: #06d6a0;
-            --light-gray: #e6f1ff;
-            --medium-gray: #ccd6f6;
-            --accent-blue: #112240;
+            --primary: #2c3e50;
+            --secondary: #2980b9;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --gradient-start: #2980b9;
+            --gradient-end: #2c3e50;
         }
         
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            color: var(--light-gray);
-            background-color: var(--dark-blue);
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f9f9f9;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(131, 56, 236, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(6, 214, 160, 0.05) 0%, transparent 20%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        header {
-            text-align: center;
-            padding: 20px;
-            border-bottom: 1px solid var(--digital-purple);
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--digital-purple), transparent);
-        }
-        
-        h1 {
-            color: var(--turquoise);
-            text-shadow: 0 0 10px rgba(6, 214, 160, 0.3);
-            letter-spacing: 1px;
-            font-weight: 700;
-            font-size: 2.2em;
+                radial-gradient(#cccccc 1px, transparent 1px),
+                radial-gradient(#cccccc 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
         }
         
         .container {
-            display: flex;
-            flex: 1;
-            max-width: 1400px;
+            max-width: 1100px;
             margin: 0 auto;
-            width: 100%;
             padding: 0 20px;
         }
         
-        .sidebar {
-            width: 280px;
-            background-color: var(--accent-blue);
-            border-right: 1px solid rgba(131, 56, 236, 0.3);
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            height: calc(100vh - 80px);
-            overflow-y: auto;
-            box-shadow: 3px 0 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        .sidebar h2 {
-            color: var(--turquoise);
-            text-align: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--digital-purple);
-        }
-        
-        .sidebar nav {
-            padding: 0 15px;
-        }
-        
-        .sidebar a {
-            display: block;
-            margin: 10px 0;
-            text-decoration: none;
-            color: var(--turquoise);
-            font-weight: 600;
-            padding: 12px 15px;
-            border: 1px solid var(--digital-purple);
-            border-radius: 5px;
-            background-color: rgba(131, 56, 236, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            font-size: 1.05em;
-        }
-        
-        .sidebar a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .sidebar a:hover {
-            background-color: var(--digital-purple);
+        header {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
-            transform: translateX(5px);
-            box-shadow: 0 0 15px rgba(131, 56, 236, 0.6);
-        }
-        
-        .sidebar a:hover::before {
-            left: 100%;
-        }
-        
-        .content {
-            flex: 1;
-            padding: 0 25px;
-            margin-top: 20px;
-        }
-        
-        .card {
-            background-color: rgba(17, 34, 64, 0.7);
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
+            padding: 80px 0 60px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 0 1px var(--digital-purple);
-            animation: glow 2.5s infinite alternate;
-            transition: transform 0.3s ease;
-            border-left: 3px solid var(--turquoise);
         }
         
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 0 1px var(--digital-purple);
-            }
-            to {
-                box-shadow: 0 0 0 1px var(--digital-purple), 
-                            0 0 15px rgba(131, 56, 236, 0.6);
-            }
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 0 1px var(--digital-purple), 
-                        0 0 20px rgba(131, 56, 236, 0.8);
-        }
-        
-        .card h2 {
-            color: var(--digital-purple);
-            margin-top: 0;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(131, 56, 236, 0.3);
-            position: relative;
-        }
-        
-        .card h2::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 80px;
-            height: 2px;
-            background-color: var(--turquoise);
-        }
-        
-        p {
-            margin-bottom: 1.5em;
-            font-size: 1.05em;
-            text-align: justify;
-        }
-        
-        .highlight {
-            background: linear-gradient(120deg, transparent 60%, rgba(131, 56, 236, 0.2) 0%);
-            padding: 0 5px;
-            font-weight: 500;
-        }
-        
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            color: var(--medium-gray);
-            font-size: 0.9em;
-            border-top: 1px solid rgba(131, 56, 236, 0.3);
-            padding: 20px 0;
-            position: relative;
-        }
-        
-        footer::before {
-            content: '';
+        header::before {
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--turquoise), transparent);
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: 100% 100%;
         }
         
-        @media (max-width: 900px) {
-            .container {
-                flex-direction: column;
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            background: white;
+            padding: 15px 0;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: white;
+            background: var(--secondary);
+        }
+        
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        nav a:hover::after {
+            width: 80%;
+        }
+        
+        .section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            position: relative;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 8px;
+            flex: 1;
+            min-width: 200px;
+            margin: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-title {
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--secondary);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            width: calc(50% - 30px);
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            margin-right: auto;
+        }
+        
+        .timeline-item:nth-child(even) {
+            margin-left: auto;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border-radius: 50%;
+        }
+        
+        .timeline-item:nth-child(odd)::before {
+            right: -40px;
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            left: -40px;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        @media (max-width: 768px) {
+            nav a {
+                margin: 5px;
+                padding: 6px 12px;
+                font-size: 0.9rem;
             }
             
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: 1px solid rgba(131, 56, 236, 0.3);
+            .section {
+                padding: 25px;
             }
             
-            .sidebar a {
-                margin: 8px 15px;
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 60px);
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            
+            .timeline-item:nth-child(odd)::before,
+            .timeline-item:nth-child(even)::before {
+                left: -40px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Apartheid and Academic Literacy</h1>
-        <p>Understanding the legacy of Bantu Education in South Africa</p>
+        <div class="container">
+            <h1>Apartheid and Academic Literacy</h1>
+            <p class="header-subtitle">Understanding the legacy of Bantu Education in South Africa</p>
+        </div>
     </header>
     
+    <nav>
+        <div class="nav-container">
+            <a href="#introduction"><i class="fas fa-info-circle"></i> Introduction</a>
+            <a href="#educational-attainment"><i class="fas fa-graduation-cap"></i> Educational Attainment</a>
+            <a href="#broader-literacy"><i class="fas fa-book"></i> Broader Literacy</a>
+            <a href="#challenges"><i class="fas fa-exclamation-triangle"></i> Challenges</a>
+            <a href="#conclusion"><i class="fas fa-check-circle"></i> Conclusion</a>
+        </div>
+    </nav>
+    
     <div class="container">
-        <div class="sidebar">
-            <h2>Navigation</h2>
-            <nav>
-                <a href="#introduction">Introduction</a>
-                <a href="#educational-attainment">Educational Attainment</a>
-                <a href="#broader-literacy">Broader Literacy Implications</a>
-                <a href="#challenges">Contemporary Challenges</a>
-                <a href="#conclusion">Conclusion</a>
-            </nav>
+        <div class="section" id="introduction">
+            <h2>Introduction</h2>
+            <p>The Bantu Education system, instituted under apartheid in South Africa with the Bantu Education Act of 1953, significantly shaped academic literacy and language development among black South Africans. It was explicitly designed to limit black students' educational opportunities in order to prepare them mainly for low-skilled labor and to maintain racial hierarchies.</p>
+            <p>The curriculum heavily emphasized practical and manual skills at the expense of academic subjects like mathematics and science, resulting in a deliberately inferior education. This system curtailed literacy development and academic competence among black learners, contributing to long-lasting educational inequalities.</p>
+            
+            <div class="stats-container">
+                <div class="stat">
+                    <div class="stat-number">1953</div>
+                    <div class="stat-title">Bantu Education Act</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">10:1</div>
+                    <div class="stat-title">Funding disparity</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">80%</div>
+                    <div class="stat-title">Less spending on black students</div>
+                </div>
+            </div>
         </div>
         
-        <div class="content">
-            <div class="card" id="introduction">
-                <h2>Introduction</h2>
-                <p>The <span class="highlight">Bantu Education system</span>, instituted under apartheid in South Africa with the Bantu Education Act of 1953, significantly shaped academic literacy and language development among black South Africans. It was explicitly designed to limit black students' educational opportunities in order to prepare them mainly for low-skilled labor and to maintain racial hierarchies. The curriculum heavily emphasized practical and manual skills at the expense of academic subjects like mathematics and science, resulting in a deliberately inferior education. This system curtailed literacy development and academic competence among black learners, contributing to long-lasting educational inequalities.</p>
-            </div>
+        <div class="section" id="educational-attainment">
+            <h2>Educational Attainment under Apartheid</h2>
+            <p>Bantu Education was based on the ideology of Hendrik Verwoerd, the Minister of Native Affairs and later Prime Minister, who is often called the architect of apartheid education. Verwoerd explicitly argued that black South Africans should be educated only up to a level that suited their role as a laboring class, famously stating there was "no place for [a black man] in the European community above the level of certain labour."</p>
+            <p>This ideology was cemented in education policy through control over curriculum content, language of instruction, and funding, all enforcing segregation and racial inferiority. The educational system under Bantu Education thus served as an ideological apparatus supporting apartheid's racial divisions and social stratification.</p>
             
-            <div class="card" id="educational-attainment">
-                <h2>Educational Attainment under Apartheid</h2>
-                <p>Bantu Education was based on the ideology of Hendrik Verwoerd, the Minister of Native Affairs and later Prime Minister, who is often called the architect of apartheid education. Verwoerd explicitly argued that black South Africans should be educated only up to a level that suited their role as a laboring class, famously stating there was "no place for [a black man] in the European community above the level of certain labour." This ideology was cemented in education policy through control over curriculum content, language of instruction, and funding, all enforcing segregation and racial inferiority. The educational system under Bantu Education thus served as an ideological apparatus supporting apartheid's racial divisions and social stratification.</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>1948</h3>
+                    <p>National Party comes to power, formalizing apartheid policies</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>1953</h3>
+                    <p>Bantu Education Act passed</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>1976</h3>
+                    <p>Soweto Uprisings against mandatory Afrikaans instruction</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>1994</h3>
+                    <p>End of apartheid, beginning of educational reforms</p>
+                </div>
             </div>
-            
-            <div class="card" id="broader-literacy">
-                <h2>Broader Literacy Implications</h2>
-                <p>The system mandated mother tongue instruction in black schools, which while ostensibly supporting linguistic diversity, created significant barriers for academic literacy development and access to higher education. Because most higher education institutions taught in English or Afrikaans, many black students faced linguistic isolation, limiting their opportunities for academic progression and cross-cultural interaction. This language policy, combined with underfunding and poor resources, contributed to low literacy outcomes, perpetuating a gap between black and white learners in South Africa.</p>
-            </div>
-            
-            <div class="card" id="challenges">
-                <h2>Contemporary Challenges for Academic Literacy Development</h2>
-                <p>For contemporary academic literacy developers, the legacy of Bantu Education poses profound challenges and important implications. The systemic deprivation and curriculum limitations of apartheid education resulted in generations of learners with weak foundations in academic literacy, requiring ongoing remediation efforts. Developers need to address multilingual literacy strategies that bridge home languages and dominant academic languages, promote critical thinking skills neglected under apartheid, and confront the socio-political dimensions of education shaped by history. Understanding the ideological context of Bantu Education is crucial for designing transformational, inclusive literacy programs that dismantle residual inequities in South African education.</p>
-            </div>
-            
-            <div class="card" id="conclusion">
-                <h2>Conclusion</h2>
-                <p>In sum, Bantu Education entrenched racialized disparities in academic literacy and language development through an apartheid ideology that restricted black South Africans' education to roles supporting subordinate labor. Its curriculum and language policies hindered literacy advancement and access to quality education. Contemporary efforts in academic literacy development must actively engage this legacy by fostering empowering, multilingual, and critical literacy frameworks that respond to the longstanding educational inequalities inherited from apartheid-era policies.</p>
-            </div>
+        </div>
+        
+        <div class="section" id="broader-literacy">
+            <h2>Broader Literacy Implications</h2>
+            <p>The system mandated mother tongue instruction in black schools, which while ostensibly supporting linguistic diversity, created significant barriers for academic literacy development and access to higher education. Because most higher education institutions taught in English or Afrikaans, many black students faced linguistic isolation, limiting their opportunities for academic progression and cross-cultural interaction.</p>
+            <p>This language policy, combined with underfunding and poor resources, contributed to low literacy outcomes, perpetuating a gap between black and white learners in South Africa.</p>
+        </div>
+        
+        <div class="section" id="challenges">
+            <h2>Contemporary Challenges for Academic Literacy Development</h2>
+            <p>For contemporary academic literacy developers, the legacy of Bantu Education poses profound challenges and important implications. The systemic deprivation and curriculum limitations of apartheid education resulted in generations of learners with weak foundations in academic literacy, requiring ongoing remediation efforts.</p>
+            <p>Developers need to address multilingual literacy strategies that bridge home languages and dominant academic languages, promote critical thinking skills neglected under apartheid, and confront the socio-political dimensions of education shaped by history. Understanding the ideological context of Bantu Education is crucial for designing transformational, inclusive literacy programs that dismantle residual inequities in South African education.</p>
+        </div>
+        
+        <div class="section" id="conclusion">
+            <h2>Conclusion</h2>
+            <p>In sum, Bantu Education entrenched racialized disparities in academic literacy and language development through an apartheid ideology that restricted black South Africans' education to roles supporting subordinate labor. Its curriculum and language policies hindered literacy advancement and access to quality education.</p>
+            <p>Contemporary efforts in academic literacy development must actively engage this legacy by fostering empowering, multilingual, and critical literacy frameworks that respond to the longstanding educational inequalities inherited from apartheid-era policies.</p>
         </div>
     </div>
     
     <footer>
-        <p>© 2023 Apartheid and Academic Literacy - Educational Resource</p>
-        <p>This website examines the historical impact of Bantu Education on academic literacy in South Africa</p>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>© 2023 Apartheid and Academic Literacy - Educational Resource</p>
+            <p>This website examines the historical impact of Bantu Education on academic literacy in South Africa</p>
+        </div>
     </footer>
+    
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Back to top button functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.opacity = '1';
+                backToTopButton.style.visibility = 'visible';
+            } else {
+                backToTopButton.style.opacity = '0';
+                backToTopButton.style.visibility = 'hidden';
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Add subtle animation to sections when they come into view
+        const sections = document.querySelectorAll('.section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        sections.forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
