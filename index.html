@@ -7,12 +7,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --dark-blue: #0a1128;
-            --royal-blue: #1a3a8f;
-            --aqua: #00ffff;
-            --turquoise: #40e0d0;
-            --purple: #9370db;
-            --glow-color: rgba(147, 112, 219, 0.8);
+            --dark-blue: #0a1930;
+            --navy-blue: #162b4d;
+            --royal-blue: #2a4a7f;
+            --light-blue: #4f7db8;
+            --aqua: #2dd4bf;
+            --turquoise: #14b8a6;
+            --cream: #f8fafc;
+            --light-gray: #e2e8f0;
+            --accent: #7e22ce;
+            --accent-glow: rgba(126, 34, 206, 0.3);
         }
         
         * {
@@ -23,12 +27,12 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #ffffff;
-            background: var(--dark-blue);
+            line-height: 1.7;
+            color: #1e293b;
+            background: var(--cream);
             min-height: 100vh;
             display: grid;
-            grid-template-columns: 250px 1fr;
+            grid-template-columns: 280px 1fr;
             grid-template-rows: auto 1fr auto;
             grid-template-areas: 
                 "header header"
@@ -38,12 +42,13 @@
         
         header {
             grid-area: header;
-            background: linear-gradient(135deg, var(--royal-blue), var(--dark-blue));
+            background: linear-gradient(135deg, var(--navy-blue), var(--dark-blue));
             color: white;
             padding: 80px 0 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
         
         .wave {
@@ -52,22 +57,9 @@
             left: 0;
             width: 100%;
             height: 100px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%230a1128'%3E%3C/path%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23f8fafc'%3E%3C/path%3E%3C/svg%3E");
             background-size: 1200px 100px;
             animation: wave 12s linear infinite;
-        }
-        
-        .wave::before {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%231a3a8f'%3E%3C/path%3E%3C/svg%3E");
-            background-size: 1200px 100px;
-            animation: wave 10s linear infinite reverse;
-            opacity: 0.5;
         }
         
         @keyframes wave {
@@ -76,137 +68,110 @@
         }
         
         h1 {
-            font-size: 3rem;
-            margin-bottom: 16px;
-            text-shadow: 0 0 15px var(--aqua), 0 0 25px var(--aqua);
-            background: linear-gradient(to right, var(--aqua), var(--turquoise));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
             font-weight: 800;
             position: relative;
             z-index: 2;
             padding: 0 20px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
         }
         
         .header-subtitle {
-            font-size: 1.2rem;
-            font-weight: 300;
+            font-size: 1.3rem;
+            font-weight: 400;
             max-width: 700px;
             margin: 0 auto;
-            text-shadow: 0 0 10px var(--turquoise);
             position: relative;
             z-index: 2;
             padding: 0 20px;
+            color: var(--light-gray);
+            line-height: 1.6;
         }
         
         nav {
             grid-area: nav;
-            background: rgba(10, 17, 40, 0.9);
-            padding: 30px 15px;
-            border-right: 1px solid var(--royal-blue);
+            background: var(--navy-blue);
+            padding: 30px 0;
             display: flex;
             flex-direction: column;
             z-index: 10;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
         }
         
         .nav-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
+            padding: 0 15px;
         }
         
         nav a {
             text-decoration: none;
-            color: var(--aqua);
+            color: var(--light-gray);
             font-weight: 600;
-            padding: 15px 20px;
+            padding: 16px 20px;
             border-radius: 8px;
             transition: all 0.3s ease;
-            text-shadow: 0 0 5px var(--aqua);
-            border: 1px solid transparent;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid transparent;
         }
         
-        nav a:hover {
-            color: var(--purple);
-            text-shadow: 0 0 10px var(--purple);
-            border: 1px solid var(--purple);
-            box-shadow: 0 0 15px var(--glow-color);
-            transform: translateX(5px);
+        nav a:hover, nav a:focus {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left: 4px solid var(--aqua);
+            transform: translateX(4px);
+        }
+        
+        nav a i {
+            width: 24px;
+            text-align: center;
+            font-size: 1.2rem;
         }
         
         main {
             grid-area: main;
-            padding: 30px;
+            padding: 40px;
             overflow-y: auto;
-            background: var(--dark-blue);
+            background: var(--cream);
         }
         
         .cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 32px;
         }
         
         .card {
-            background: rgba(15, 25, 55, 0.9);
-            padding: 30px;
-            border-radius: 15px;
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
             transition: all 0.3s ease;
             height: 100%;
             display: flex;
             flex-direction: column;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-        }
-        
-        .card::before {
-            content: "";
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            z-index: -1;
-            background: linear-gradient(45deg, var(--aqua), var(--turquoise), var(--purple), var(--royal-blue), var(--aqua));
-            border-radius: 16px;
-            animation: border-glow 3s linear infinite;
-            background-size: 400%;
-        }
-        
-        @keyframes border-glow {
-            0% { 
-                background-position: 0% 50%; 
-                opacity: 0.7;
-            }
-            50% { 
-                background-position: 100% 50%; 
-                opacity: 1;
-            }
-            100% { 
-                background-position: 0% 50%; 
-                opacity: 0.7;
-            }
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+            border-top: 5px solid var(--royal-blue);
         }
         
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(147, 112, 219, 0.4);
-        }
-        
-        .card:hover::before {
-            animation: border-glow 1.5s linear infinite;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
         }
         
         h2 {
-            color: var(--turquoise);
+            color: var(--royal-blue);
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 1px solid rgba(64, 224, 208, 0.3);
+            border-bottom: 1px solid var(--light-gray);
             position: relative;
+            font-size: 1.6rem;
         }
         
         h2::after {
@@ -214,119 +179,131 @@
             position: absolute;
             bottom: -1px;
             left: 0;
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--aqua), transparent);
+            width: 80px;
+            height: 3px;
+            background: var(--aqua);
+            border-radius: 3px;
         }
         
         p {
             margin-bottom: 20px;
-            font-size: 1.05rem;
+            font-size: 1.06rem;
             flex-grow: 1;
             line-height: 1.7;
+            color: #334155;
         }
         
         .card-image {
-            max-width: 300px;
+            width: 100%;
             border-radius: 8px;
-            margin: 0 20px 15px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            float: left;
-        }
-        
-        .card-image.right {
-            float: right;
-            margin: 0 0 15px 20px;
+            margin: 0 0 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
         .stats-container {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            margin: 30px 0;
-            clear: both;
+            margin: 25px 0;
+            gap: 15px;
         }
         
         .stat {
             text-align: center;
             padding: 20px;
-            background: rgba(26, 58, 143, 0.2);
+            background: var(--light-gray);
             border-radius: 10px;
             flex: 1;
-            min-width: 200px;
-            margin: 10px;
-            border: 1px solid rgba(147, 112, 219, 0.2);
-            box-shadow: 0 0 10px rgba(147, 112, 219, 0.2);
+            min-width: 150px;
+            border: 1px solid var(--light-blue);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
         
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--aqua), var(--purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            color: var(--royal-blue);
+            margin-bottom: 8px;
         }
         
         .stat-title {
-            font-size: 1.1rem;
-            color: var(--turquoise);
+            font-size: 1rem;
+            color: var(--navy-blue);
+            font-weight: 600;
         }
         
         footer {
             grid-area: footer;
-            background: linear-gradient(135deg, var(--dark-blue), var(--royal-blue));
+            background: var(--navy-blue);
             color: white;
-            padding: 30px 0;
+            padding: 40px 0;
             text-align: center;
         }
         
         .footer-content {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
+            padding: 0 20px;
         }
         
         .social-icons {
-            margin: 20px 0;
+            margin: 25px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
         
         .social-icons a {
             color: white;
-            font-size: 1.5rem;
-            margin: 0 15px;
+            font-size: 1.4rem;
             transition: all 0.3s ease;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .social-icons a:hover {
             color: var(--aqua);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
         }
         
         .back-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--aqua), var(--purple));
+            width: 50px;
+            height: 50px;
+            background: var(--royal-blue);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 20px rgba(147, 112, 219, 0.5);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
         }
         
         .back-to-top:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 25px var(--glow-color);
+            transform: translateY(-5px);
+            background: var(--accent);
         }
         
-        @media (max-width: 900px) {
+        @media (max-width: 1000px) {
             body {
                 grid-template-columns: 1fr;
                 grid-template-areas: 
@@ -338,45 +315,85 @@
             
             nav {
                 border-right: none;
-                border-bottom: 1px solid var(--royal-blue);
+                border-bottom: 1px solid var(--light-gray);
+                padding: 20px 0;
             }
             
             .nav-container {
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: center;
+                gap: 10px;
             }
             
             nav a {
-                padding: 10px 15px;
+                padding: 12px 16px;
+                font-size: 0.9rem;
             }
             
-            .card-image {
-                float: none;
-                margin: 0 auto 20px;
-                display: block;
-                max-width: 100%;
+            nav a i {
+                font-size: 1.1rem;
+            }
+            
+            main {
+                padding: 30px;
             }
         }
         
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
             h1 {
                 font-size: 2.2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            main {
+                padding: 20px;
+            }
+            
+            .stat {
+                min-width: 120px;
+                padding: 15px;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.9rem;
             }
             
             .header-subtitle {
                 font-size: 1rem;
             }
             
-            .cards-container {
-                grid-template-columns: 1fr;
-            }
-            
             .card {
                 padding: 20px;
             }
             
-            .nav-container {
+            h2 {
+                font-size: 1.4rem;
+            }
+            
+            .stats-container {
                 flex-direction: column;
             }
         }
@@ -423,8 +440,8 @@
             
             <div class="card" id="educational-attainment">
                 <h2>Educational Attainment under Apartheid</h2>
-                <img src="https://i0.wp.com/culturacolectiva.com/wp-content/uploads/images/D4WFLXMHHBHMLGMQQMXQLKXEK4.jpg?ssl=1" alt="Apartheid Education" class="card-image right">
-                <p>Bantu Education was based on the ideology of Hendrik Verwoerd, the Minister of Native Affairs and later Prime Minister, who is often called the architect of apartheid education. Verwoerd explicitly argued that black South Africans should be educated only up to a level that suited their role as a laboring class, famously stating there was "no place for [a black man] in the European community above the level of certain labour."</p>
+                <img src="https://i0.wp.com/culturacolectiva.com/wp-content/uploads/images/D4WFLXMHHBHMLGMQQMXQLKXEK4.jpg?ssl=1" alt="Apartheid Education" class="card-image">
+                <p>Bantu Education was based on the ideology of Hendrik Verwoerd, the Minister of Native Affairs and later Prime Minister, who is often called the architect of apartheid education. Verwoerd explicitly argued that black South Africans should be educated only up to a level that suited their role as a labouring class, famously stating there was "no place for [a black man] in the European community above the level of certain labour."</p>
                 <p>This ideology was cemented in education policy through control over curriculum content, language of instruction, and funding, all enforcing segregation and racial inferiority. The educational system under Bantu Education thus served as an ideological apparatus supporting apartheid's racial divisions and social stratification.</p>
             </div>
             
@@ -437,13 +454,14 @@
             
             <div class="card" id="challenges">
                 <h2>Contemporary Challenges for Academic Literacy Development</h2>
-                <img src="https://i0.wp.com/culturacolectiva.com/wp-content/uploads/images/SGFT4YK7UJBJRNVSI6W2WGCZ3U.png?ssl=1" alt="Contemporary Challenges" class="card-image right">
+                <img src="https://i0.wp.com/culturacolectiva.com/wp-content/uploads/images/SGFT4YK7UJBJRNVSI6W2WGCZ3U.png?ssl=1" alt="Contemporary Challenges" class="card-image">
                 <p>For contemporary academic literacy developers, the legacy of Bantu Education poses profound challenges and important implications. The systemic deprivation and curriculum limitations of apartheid education resulted in generations of learners with weak foundations in academic literacy, requiring ongoing remediation efforts.</p>
                 <p>Developers need to address multilingual literacy strategies that bridge home languages and dominant academic languages, promote critical thinking skills neglected under apartheid, and confront the socio-political dimensions of education shaped by history.</p>
             </div>
             
             <div class="card" id="conclusion">
                 <h2>Conclusion</h2>
+                <img src="https://images.unsplash.com/photo-1584697964358-3e14ca57658b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Education for all" class="card-image">
                 <p>In sum, Bantu Education entrenched racialized disparities in academic literacy and language development through an apartheid ideology that restricted black South Africans' education to roles supporting subordinate labor. Its curriculum and language policies hindered literacy advancement and access to quality education.</p>
                 <p>Contemporary efforts in academic literacy development must actively engage this legacy by fostering empowering, multilingual, and critical literacy frameworks that respond to the longstanding educational inequalities inherited from apartheid-era policies.</p>
             </div>
@@ -488,11 +506,9 @@
         
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
-                backToTopButton.style.opacity = '1';
-                backToTopButton.style.visibility = 'visible';
+                backToTopButton.classList.add('show');
             } else {
-                backToTopButton.style.opacity = '0';
-                backToTopButton.style.visibility = 'hidden';
+                backToTopButton.classList.remove('show');
             }
         });
         
@@ -504,7 +520,7 @@
             });
         });
         
-        // Add subtle animation to cards when they come into view
+        // Add animation to cards when they come into view
         const cards = document.querySelectorAll('.card');
         
         const observer = new IntersectionObserver((entries) => {
