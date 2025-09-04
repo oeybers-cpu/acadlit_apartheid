@@ -27,21 +27,21 @@
             color: #e6e6ff;
             background: linear-gradient(135deg, var(--dark-blue), #0a1b3a);
             min-height: 100vh;
-            background-attachment: fixed;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas: 
+                "header header"
+                "nav main"
+                "footer footer";
         }
         
         header {
+            grid-area: header;
             background: linear-gradient(135deg, var(--royal-blue), var(--dark-blue));
             color: white;
-            padding: 100px 0 80px;
+            padding: 80px 0 100px;
             text-align: center;
-            margin-bottom: 40px;
             position: relative;
             overflow: hidden;
         }
@@ -76,52 +76,58 @@
         }
         
         h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 16px;
             text-shadow: 0 0 15px var(--aqua), 0 0 25px var(--aqua);
             background: linear-gradient(to right, var(--aqua), var(--turquoise));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 800;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
         }
         
         .header-subtitle {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 300;
             max-width: 700px;
             margin: 0 auto;
             text-shadow: 0 0 10px var(--turquoise);
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
         }
         
         nav {
+            grid-area: nav;
             background: rgba(10, 17, 40, 0.9);
-            padding: 20px 0;
-            margin-bottom: 40px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--royal-blue);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
+            padding: 30px 15px;
+            border-right: 1px solid var(--royal-blue);
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
         }
         
         .nav-container {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 15px;
         }
         
         nav a {
-            margin: 0 15px;
             text-decoration: none;
             color: var(--aqua);
             font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 30px;
+            padding: 15px 20px;
+            border-radius: 8px;
             transition: all 0.3s ease;
-            position: relative;
             text-shadow: 0 0 5px var(--aqua);
             border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
         nav a:hover {
@@ -129,13 +135,19 @@
             text-shadow: 0 0 10px var(--purple);
             border: 1px solid var(--purple);
             box-shadow: 0 0 15px var(--glow-color);
+            transform: translateX(5px);
+        }
+        
+        main {
+            grid-area: main;
+            padding: 30px;
+            overflow-y: auto;
         }
         
         .cards-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            margin-bottom: 50px;
         }
         
         .card {
@@ -238,68 +250,12 @@
             color: var(--turquoise);
         }
         
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 40px auto;
-        }
-        
-        .timeline::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent, var(--aqua), var(--purple), transparent);
-            transform: translateX(-50%);
-        }
-        
-        .timeline-item {
-            padding: 20px;
-            background: rgba(26, 58, 143, 0.2);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            margin-bottom: 30px;
-            width: calc(50% - 30px);
-            position: relative;
-            border: 1px solid rgba(147, 112, 219, 0.3);
-        }
-        
-        .timeline-item:nth-child(odd) {
-            margin-right: auto;
-        }
-        
-        .timeline-item:nth-child(even) {
-            margin-left: auto;
-        }
-        
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            top: 20px;
-            width: 20px;
-            height: 20px;
-            background: linear-gradient(135deg, var(--aqua), var(--purple));
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--aqua);
-        }
-        
-        .timeline-item:nth-child(odd)::before {
-            right: -40px;
-        }
-        
-        .timeline-item:nth-child(even)::before {
-            left: -40px;
-        }
-        
         footer {
+            grid-area: footer;
             background: linear-gradient(135deg, var(--dark-blue), var(--royal-blue));
             color: white;
-            padding: 60px 0 40px;
-            margin-top: 60px;
+            padding: 30px 0;
             text-align: center;
-            position: relative;
         }
         
         .footer-content {
@@ -349,19 +305,39 @@
             box-shadow: 0 8px 25px var(--glow-color);
         }
         
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
+        @media (max-width: 900px) {
+            body {
+                grid-template-columns: 1fr;
+                grid-template-areas: 
+                    "header"
+                    "nav"
+                    "main"
+                    "footer";
             }
             
-            .header-subtitle {
-                font-size: 1.1rem;
+            nav {
+                border-right: none;
+                border-bottom: 1px solid var(--royal-blue);
+            }
+            
+            .nav-container {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             nav a {
-                margin: 5px;
-                padding: 8px 15px;
-                font-size: 0.9rem;
+                padding: 10px 15px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
             }
             
             .cards-container {
@@ -372,19 +348,8 @@
                 padding: 20px;
             }
             
-            .timeline::before {
-                left: 30px;
-            }
-            
-            .timeline-item {
-                width: calc(100% - 60px);
-                margin-left: auto !important;
-                margin-right: auto !important;
-            }
-            
-            .timeline-item:nth-child(odd)::before,
-            .timeline-item:nth-child(even)::before {
-                left: -40px;
+            .nav-container {
+                flex-direction: column;
             }
         }
     </style>
@@ -408,7 +373,7 @@
         </div>
     </nav>
     
-    <div class="container">
+    <main>
         <div class="cards-container">
             <div class="card" id="introduction">
                 <h2>Introduction</h2>
@@ -431,17 +396,6 @@
                 <h2>Educational Attainment under Apartheid</h2>
                 <p>Bantu Education was based on the ideology of Hendrik Verwoerd, the Minister of Native Affairs and later Prime Minister, who is often called the architect of apartheid education. Verwoerd explicitly argued that black South Africans should be educated only up to a level that suited their role as a laboring class, famously stating there was "no place for [a black man] in the European community above the level of certain labour."</p>
                 <p>This ideology was cemented in education policy through control over curriculum content, language of instruction, and funding, all enforcing segregation and racial inferiority. The educational system under Bantu Education thus served as an ideological apparatus supporting apartheid's racial divisions and social stratification.</p>
-                
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <h3>1948</h3>
-                        <p>National Party comes to power, formalizing apartheid policies</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h3>1953</h3>
-                        <p>Bantu Education Act passed</p>
-                    </div>
-                </div>
             </div>
             
             <div class="card" id="broader-literacy">
@@ -462,7 +416,7 @@
                 <p>Contemporary efforts in academic literacy development must actively engage this legacy by fostering empowering, multilingual, and critical literacy frameworks that respond to the longstanding educational inequalities inherited from apartheid-era policies.</p>
             </div>
         </div>
-    </div>
+    </main>
     
     <footer>
         <div class="footer-content">
