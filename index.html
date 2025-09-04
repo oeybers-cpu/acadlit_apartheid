@@ -14,25 +14,30 @@
             --accent-blue: #112240;
         }
         
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.8;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
             color: var(--light-gray);
             background-color: var(--dark-blue);
             background-image: 
                 radial-gradient(circle at 10% 20%, rgba(131, 56, 236, 0.05) 0%, transparent 20%),
                 radial-gradient(circle at 90% 80%, rgba(6, 214, 160, 0.05) 0%, transparent 20%);
-            box-shadow: 0 0 50px rgba(131, 56, 236, 0.2);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         
         header {
             text-align: center;
-            margin-bottom: 40px;
+            padding: 20px;
             border-bottom: 1px solid var(--digital-purple);
-            padding-bottom: 20px;
+            margin-bottom: 20px;
             position: relative;
         }
         
@@ -51,68 +56,59 @@
             text-shadow: 0 0 10px rgba(6, 214, 160, 0.3);
             letter-spacing: 1px;
             font-weight: 700;
+            font-size: 2.2em;
         }
         
-        h2 {
-            color: var(--digital-purple);
-            margin-top: 30px;
-            border-bottom: 1px solid rgba(131, 56, 236, 0.3);
-            padding-bottom: 5px;
-            position: relative;
+        .container {
+            display: flex;
+            flex: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px;
         }
         
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100px;
-            height: 2px;
-            background-color: var(--turquoise);
-        }
-        
-        p {
-            margin-bottom: 1.5em;
-            font-size: 1.05em;
-            text-align: justify;
-        }
-        
-        nav {
-            margin-bottom: 30px;
-            text-align: center;
-            position: relative;
-            padding: 15px 0;
+        .sidebar {
+            width: 280px;
             background-color: var(--accent-blue);
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        nav::before {
-            content: '';
-            position: absolute;
+            border-right: 1px solid rgba(131, 56, 236, 0.3);
+            padding: 20px 0;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--digital-purple), var(--turquoise));
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+            box-shadow: 3px 0 15px rgba(0, 0, 0, 0.3);
         }
         
-        nav a {
-            margin: 0 10px;
+        .sidebar h2 {
+            color: var(--turquoise);
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--digital-purple);
+        }
+        
+        .sidebar nav {
+            padding: 0 15px;
+        }
+        
+        .sidebar a {
+            display: block;
+            margin: 10px 0;
             text-decoration: none;
             color: var(--turquoise);
             font-weight: 600;
-            padding: 8px 15px;
+            padding: 12px 15px;
             border: 1px solid var(--digital-purple);
             border-radius: 5px;
-            transition: all 0.3s ease;
             background-color: rgba(131, 56, 236, 0.1);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            font-size: 0.95em;
+            font-size: 1.05em;
         }
         
-        nav a::before {
+        .sidebar a::before {
             content: '';
             position: absolute;
             top: 0;
@@ -123,38 +119,89 @@
             transition: 0.5s;
         }
         
-        nav a:hover {
+        .sidebar a:hover {
             background-color: var(--digital-purple);
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(131, 56, 236, 0.4);
+            transform: translateX(5px);
+            box-shadow: 0 0 15px rgba(131, 56, 236, 0.6);
         }
         
-        nav a:hover::before {
+        .sidebar a:hover::before {
             left: 100%;
         }
         
-        .section {
-            margin-bottom: 40px;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: rgba(17, 34, 64, 0.5);
-            transition: transform 0.3s ease;
-            border-left: 3px solid var(--digital-purple);
+        .content {
+            flex: 1;
+            padding: 0 25px;
+            margin-top: 20px;
         }
         
-        .section:hover {
-            transform: translateX(5px);
+        .card {
             background-color: rgba(17, 34, 64, 0.7);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px var(--digital-purple);
+            animation: glow 2.5s infinite alternate;
+            transition: transform 0.3s ease;
+            border-left: 3px solid var(--turquoise);
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 0 1px var(--digital-purple);
+            }
+            to {
+                box-shadow: 0 0 0 1px var(--digital-purple), 
+                            0 0 15px rgba(131, 56, 236, 0.6);
+            }
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 0 1px var(--digital-purple), 
+                        0 0 20px rgba(131, 56, 236, 0.8);
+        }
+        
+        .card h2 {
+            color: var(--digital-purple);
+            margin-top: 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(131, 56, 236, 0.3);
+            position: relative;
+        }
+        
+        .card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background-color: var(--turquoise);
+        }
+        
+        p {
+            margin-bottom: 1.5em;
+            font-size: 1.05em;
+            text-align: justify;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, transparent 60%, rgba(131, 56, 236, 0.2) 0%);
+            padding: 0 5px;
+            font-weight: 500;
         }
         
         footer {
-            margin-top: 50px;
+            margin-top: 40px;
             text-align: center;
             color: var(--medium-gray);
             font-size: 0.9em;
             border-top: 1px solid rgba(131, 56, 236, 0.3);
-            padding-top: 20px;
+            padding: 20px 0;
             position: relative;
         }
         
@@ -168,10 +215,22 @@
             background: linear-gradient(90deg, transparent, var(--turquoise), transparent);
         }
         
-        .highlight {
-            background: linear-gradient(120deg, transparent 60%, rgba(131, 56, 236, 0.2) 0%);
-            padding: 0 5px;
-            font-weight: 500;
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid rgba(131, 56, 236, 0.3);
+            }
+            
+            .sidebar a {
+                margin: 8px 15px;
+            }
         }
     </style>
 </head>
@@ -181,37 +240,44 @@
         <p>Understanding the legacy of Bantu Education in South Africa</p>
     </header>
     
-    <nav>
-        <a href="#introduction">Introduction</a>
-        <a href="#educational-attainment">Educational Attainment</a>
-        <a href="#broader-literacy">Broader Literacy Implications</a>
-        <a href="#challenges">Contemporary Challenges</a>
-        <a href="#conclusion">Conclusion</a>
-    </nav>
-    
-    <div class="section" id="introduction">
-        <h2>Introduction</h2>
-        <p>The <span class="highlight">Bantu Education system</span>, instituted under apartheid in South Africa with the Bantu Education Act of 1953, significantly shaped academic literacy and language development among black South Africans. It was explicitly designed to limit black students' educational opportunities in order to prepare them mainly for low-skilled labor and to maintain racial hierarchies. The curriculum heavily emphasized practical and manual skills at the expense of academic subjects like mathematics and science, resulting in a deliberately inferior education. This system curtailed literacy development and academic competence among black learners, contributing to long-lasting educational inequalities.</p>
-    </div>
-    
-    <div class="section" id="educational-attainment">
-        <h2>Educational Attainment under Apartheid</h2>
-        <p>Bantu Education was based on the ideology of Hendrik Verwoerd, the Minister of Native Affairs and later Prime Minister, who is often called the architect of apartheid education. Verwoerd explicitly argued that black South Africans should be educated only up to a level that suited their role as a laboring class, famously stating there was "no place for [a black man] in the European community above the level of certain labour." This ideology was cemented in education policy through control over curriculum content, language of instruction, and funding, all enforcing segregation and racial inferiority. The educational system under Bantu Education thus served as an ideological apparatus supporting apartheid's racial divisions and social stratification.</p>
-    </div>
-    
-    <div class="section" id="broader-literacy">
-        <h2>Broader Literacy Implications</h2>
-        <p>The system mandated mother tongue instruction in black schools, which while ostensibly supporting linguistic diversity, created significant barriers for academic literacy development and access to higher education. Because most higher education institutions taught in English or Afrikaans, many black students faced linguistic isolation, limiting their opportunities for academic progression and cross-cultural interaction. This language policy, combined with underfunding and poor resources, contributed to low literacy outcomes, perpetuating a gap between black and white learners in South Africa.</p>
-    </div>
-    
-    <div class="section" id="challenges">
-        <h2>Contemporary Challenges for Academic Literacy Development</h2>
-        <p>For contemporary academic literacy developers, the legacy of Bantu Education poses profound challenges and important implications. The systemic deprivation and curriculum limitations of apartheid education resulted in generations of learners with weak foundations in academic literacy, requiring ongoing remediation efforts. Developers need to address multilingual literacy strategies that bridge home languages and dominant academic languages, promote critical thinking skills neglected under apartheid, and confront the socio-political dimensions of education shaped by history. Understanding the ideological context of Bantu Education is crucial for designing transformational, inclusive literacy programs that dismantle residual inequities in South African education.</p>
-    </div>
-    
-    <div class="section" id="conclusion">
-        <h2>Conclusion</h2>
-        <p>In sum, Bantu Education entrenched racialized disparities in academic literacy and language development through an apartheid ideology that restricted black South Africans' education to roles supporting subordinate labor. Its curriculum and language policies hindered literacy advancement and access to quality education. Contemporary efforts in academic literacy development must actively engage this legacy by fostering empowering, multilingual, and critical literacy frameworks that respond to the longstanding educational inequalities inherited from apartheid-era policies.</p>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Navigation</h2>
+            <nav>
+                <a href="#introduction">Introduction</a>
+                <a href="#educational-attainment">Educational Attainment</a>
+                <a href="#broader-literacy">Broader Literacy Implications</a>
+                <a href="#challenges">Contemporary Challenges</a>
+                <a href="#conclusion">Conclusion</a>
+            </nav>
+        </div>
+        
+        <div class="content">
+            <div class="card" id="introduction">
+                <h2>Introduction</h2>
+                <p>The <span class="highlight">Bantu Education system</span>, instituted under apartheid in South Africa with the Bantu Education Act of 1953, significantly shaped academic literacy and language development among black South Africans. It was explicitly designed to limit black students' educational opportunities in order to prepare them mainly for low-skilled labor and to maintain racial hierarchies. The curriculum heavily emphasized practical and manual skills at the expense of academic subjects like mathematics and science, resulting in a deliberately inferior education. This system curtailed literacy development and academic competence among black learners, contributing to long-lasting educational inequalities.</p>
+            </div>
+            
+            <div class="card" id="educational-attainment">
+                <h2>Educational Attainment under Apartheid</h2>
+                <p>Bantu Education was based on the ideology of Hendrik Verwoerd, the Minister of Native Affairs and later Prime Minister, who is often called the architect of apartheid education. Verwoerd explicitly argued that black South Africans should be educated only up to a level that suited their role as a laboring class, famously stating there was "no place for [a black man] in the European community above the level of certain labour." This ideology was cemented in education policy through control over curriculum content, language of instruction, and funding, all enforcing segregation and racial inferiority. The educational system under Bantu Education thus served as an ideological apparatus supporting apartheid's racial divisions and social stratification.</p>
+            </div>
+            
+            <div class="card" id="broader-literacy">
+                <h2>Broader Literacy Implications</h2>
+                <p>The system mandated mother tongue instruction in black schools, which while ostensibly supporting linguistic diversity, created significant barriers for academic literacy development and access to higher education. Because most higher education institutions taught in English or Afrikaans, many black students faced linguistic isolation, limiting their opportunities for academic progression and cross-cultural interaction. This language policy, combined with underfunding and poor resources, contributed to low literacy outcomes, perpetuating a gap between black and white learners in South Africa.</p>
+            </div>
+            
+            <div class="card" id="challenges">
+                <h2>Contemporary Challenges for Academic Literacy Development</h2>
+                <p>For contemporary academic literacy developers, the legacy of Bantu Education poses profound challenges and important implications. The systemic deprivation and curriculum limitations of apartheid education resulted in generations of learners with weak foundations in academic literacy, requiring ongoing remediation efforts. Developers need to address multilingual literacy strategies that bridge home languages and dominant academic languages, promote critical thinking skills neglected under apartheid, and confront the socio-political dimensions of education shaped by history. Understanding the ideological context of Bantu Education is crucial for designing transformational, inclusive literacy programs that dismantle residual inequities in South African education.</p>
+            </div>
+            
+            <div class="card" id="conclusion">
+                <h2>Conclusion</h2>
+                <p>In sum, Bantu Education entrenched racialized disparities in academic literacy and language development through an apartheid ideology that restricted black South Africans' education to roles supporting subordinate labor. Its curriculum and language policies hindered literacy advancement and access to quality education. Contemporary efforts in academic literacy development must actively engage this legacy by fostering empowering, multilingual, and critical literacy frameworks that respond to the longstanding educational inequalities inherited from apartheid-era policies.</p>
+            </div>
+        </div>
     </div>
     
     <footer>
