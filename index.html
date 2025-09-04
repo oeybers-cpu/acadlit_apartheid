@@ -42,7 +42,7 @@
         
         header {
             grid-area: header;
-            background: linear-gradient(135deg, var(--navy-blue), var(--dark-blue));
+            background: linear-gradient(135deg, #1a3a8f, #0a1128, #162b4d);
             color: white;
             padding: 80px 0 100px;
             text-align: center;
@@ -75,7 +75,7 @@
             z-index: 2;
             padding: 0 20px;
             color: white;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
             letter-spacing: 0.5px;
         }
         
@@ -89,6 +89,7 @@
             padding: 0 20px;
             color: var(--light-gray);
             line-height: 1.6;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
         }
         
         nav {
@@ -308,12 +309,12 @@
             grid-column: 1 / -1;
             max-width: 800px;
             margin: 0 auto;
-            text-align: center;
+            text-align: left; /* Changed from center to left */
         }
         
         #conclusion h2::after {
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0; /* Changed from center to left */
+            transform: none; /* Removed centering transform */
         }
         
         @media (max-width: 1000px) {
