@@ -24,8 +24,8 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #e6e6ff;
-            background: linear-gradient(135deg, var(--dark-blue), #0a1b3a);
+            color: #ffffff;
+            background: var(--dark-blue);
             min-height: 100vh;
             display: grid;
             grid-template-columns: 250px 1fr;
@@ -104,7 +104,6 @@
             background: rgba(10, 17, 40, 0.9);
             padding: 30px 15px;
             border-right: 1px solid var(--royal-blue);
-            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             z-index: 10;
@@ -142,6 +141,7 @@
             grid-area: main;
             padding: 30px;
             overflow-y: auto;
+            background: var(--dark-blue);
         }
         
         .cards-container {
@@ -151,17 +151,16 @@
         }
         
         .card {
-            background: linear-gradient(145deg, rgba(26, 58, 143, 0.2), rgba(10, 17, 40, 0.4));
+            background: rgba(15, 25, 55, 0.9);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             height: 100%;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(147, 112, 219, 0.3);
             position: relative;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
         
         .card::before {
@@ -172,23 +171,34 @@
             right: -2px;
             bottom: -2px;
             z-index: -1;
-            background: linear-gradient(45deg, var(--aqua), var(--turquoise), var(--purple), var(--royal-blue));
+            background: linear-gradient(45deg, var(--aqua), var(--turquoise), var(--purple), var(--royal-blue), var(--aqua));
             border-radius: 16px;
             animation: border-glow 3s linear infinite;
             background-size: 400%;
         }
         
         @keyframes border-glow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% { 
+                background-position: 0% 50%; 
+                opacity: 0.7;
+            }
+            50% { 
+                background-position: 100% 50%; 
+                opacity: 1;
+            }
+            100% { 
+                background-position: 0% 50%; 
+                opacity: 0.7;
+            }
         }
         
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--purple);
-            box-shadow: 0 0 25px var(--glow-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(147, 112, 219, 0.4);
+        }
+        
+        .card:hover::before {
+            animation: border-glow 1.5s linear infinite;
         }
         
         h2 {
@@ -197,7 +207,6 @@
             padding-bottom: 15px;
             border-bottom: 1px solid rgba(64, 224, 208, 0.3);
             position: relative;
-            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
         }
         
         h2::after {
@@ -214,6 +223,7 @@
             margin-bottom: 20px;
             font-size: 1.05rem;
             flex-grow: 1;
+            line-height: 1.7;
         }
         
         .stats-container {
@@ -226,13 +236,13 @@
         .stat {
             text-align: center;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(26, 58, 143, 0.2);
             border-radius: 10px;
             flex: 1;
             min-width: 200px;
             margin: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(147, 112, 219, 0.2);
+            box-shadow: 0 0 10px rgba(147, 112, 219, 0.2);
         }
         
         .stat-number {
@@ -242,7 +252,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(147, 112, 219, 0.3);
         }
         
         .stat-title {
@@ -272,12 +281,10 @@
             font-size: 1.5rem;
             margin: 0 15px;
             transition: all 0.3s ease;
-            text-shadow: 0 0 5px var(--aqua);
         }
         
         .social-icons a:hover {
             color: var(--aqua);
-            text-shadow: 0 0 15px var(--aqua);
             transform: translateY(-5px);
         }
         
