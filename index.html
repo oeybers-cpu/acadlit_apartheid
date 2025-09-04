@@ -65,7 +65,7 @@
             left: 0;
             width: 100%;
             height: 100px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%230d1b42'%3E%3C/path%3E%3C/svg%3E");
+            background: url("image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%230d1b42'%3E%3C/path%3E%3C/svg%3E");
             background-size: 1200px 100px;
             animation: wave 5s linear infinite reverse; /* Increased speed */
             opacity: 0.5;
@@ -167,6 +167,11 @@
             position: relative;
         }
         
+        /* Full width cards */
+        .card.full-width {
+            grid-column: 1 / -1;
+        }
+        
         h2 {
             color: var(--turquoise);
             margin-bottom: 15px;
@@ -202,6 +207,13 @@
         .card-image.right {
             float: right;
             margin: 0 0 12px 18px;
+        }
+        
+        .additional-image {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 15px auto;
+            display: block;
         }
         
         .stats-container {
@@ -317,6 +329,10 @@
                 display: block;
                 max-width: 100%;
             }
+            
+            .additional-image {
+                max-width: 90%;
+            }
         }
         
         @media (max-width: 600px) {
@@ -386,6 +402,10 @@
                 <img src="https://i0.wp.com/culturacolectiva.com/wp-content/uploads/images/D4WFLXMHHBHMLGMQQMXQLKXEK4.jpg?ssl=1" alt="Apartheid Education" class="card-image right">
                 <p>Bantu Education was based on the ideology of Hendrik Verwoerd, the Minister of Native Affairs and later Prime Minister, who is often called the architect of apartheid education.</p>
                 <p>Verwoerd explicitly argued that black South Africans should be educated only up to a level that suited their role as a laboring class.</p>
+                
+                <img src="https://cdn.24.co.za/files/Cms/General/d/3532/93101741cf1943a09a1c22f29dd7040a.jpg" 
+                     alt="Historical classroom image" 
+                     class="additional-image">
             </div>
             
             <div class="card" id="broader-literacy">
@@ -393,19 +413,38 @@
                 <img src="https://i0.wp.com/culturacolectiva.com/wp-content/uploads/images/JH4URPBMIVE4TEYOJNH4EB7RDY.jpg?ssl=1" alt="Literacy Implications" class="card-image">
                 <p>The system mandated mother tongue instruction in black schools, which while ostensibly supporting linguistic diversity, created significant barriers for academic literacy development.</p>
                 <p>Because most higher education institutions taught in English or Afrikaans, many black students faced linguistic isolation.</p>
+                
+                <img src="https://mycourses.co.za/wp-content/uploads/2023/09/Bantu-Education-Conducted.jpeg" 
+                     alt="Bantu Education classroom" 
+                     class="additional-image">
             </div>
             
-            <div class="card" id="challenges">
+            <div class="card full-width" id="challenges">
                 <h2>Contemporary Challenges</h2>
-                <img src="https://i0.wp.com/culturacolectiva.com/wp-content/uploads/images/SGFT4YK7UJBJRNVSI6W2WGCZ3U.png?ssl=1" alt="Contemporary Challenges" class="card-image right">
+                <img src="https://i0.wp.com/culturacolectiva.com/wp-content/uploads/images/SGFT4YK7UJBJRNVSI6W2WGCZ3U.png?ssl=1" alt="Contemporary Challenges" class="card-image">
                 <p>For contemporary academic literacy developers, the legacy of Bantu Education poses profound challenges and important implications.</p>
                 <p>The systemic deprivation and curriculum limitations of apartheid education resulted in generations of learners with weak foundations in academic literacy.</p>
+                <p>Current educational disparities continue to reflect the structural inequalities established during apartheid, with significant resource gaps between historically disadvantaged and advantaged institutions.</p>
+                <p>Academic literacy programs today must address not only linguistic and cognitive challenges but also the psychological impacts of systemic educational oppression that have been internalized across generations.</p>
             </div>
             
-            <div class="card" id="conclusion">
-                <h2>Conclusion</h2>
-                <p>In sum, Bantu Education entrenched racialized disparities in academic literacy and language development through an apartheid ideology that restricted black South Africans' education.</p>
-                <p>Contemporary efforts in academic literacy development must actively engage this legacy by fostering empowering, multilingual, and critical literacy frameworks.</p>
+            <div class="card full-width" id="conclusion">
+                <h2>Conclusion: The Critical Role of Academic Literacy Facilitators Today</h2>
+                <p>In sum, Bantu Education entrenched racialized disparities in academic literacy and language development through an apartheid ideology that restricted black South Africans' education. Contemporary efforts in academic literacy development must actively engage this legacy by fostering empowering, multilingual, and critical literacy frameworks.</p>
+                
+                <p>Today's academic literacy facilitators play a crucial transformative role in addressing this historical injustice. They must move beyond merely compensating for educational deficits to actively dismantling the epistemological violence of apartheid education. This requires:</p>
+                
+                <p><strong>1. Critical Pedagogy Integration:</strong> Facilitators should implement Freirean approaches that validate students' lived experiences while developing critical consciousness. Academic literacy becomes a tool for social transformation rather than mere assimilation into dominant discourse.</p>
+                
+                <p><strong>2. Multilingual Empowerment:</strong> Rather than viewing African languages as obstacles to academic success, facilitators must leverage students' linguistic repertoires as cognitive resources. Code-switching and translanguaging should be embraced as sophisticated academic strategies.</p>
+                
+                <p><strong>3. Epistemic Justice:</strong> Academic literacy programs must actively incorporate African knowledge systems and challenge the Eurocentric canon that dominated apartheid education. This includes decolonizing reading materials and assessment practices.</p>
+                
+                <p><strong>4. Psychological Reclamation:</strong> Facilitators must address the internalized oppression that manifests as "imposter syndrome" among many students from historically disadvantaged backgrounds. Academic literacy development should include confidence-building through recognizing students' intellectual heritage.</p>
+                
+                <p><strong>5. Structural Advocacy:</strong> Beyond classroom interventions, literacy facilitators must advocate for institutional changes that address resource disparities. True academic literacy development requires equitable access to libraries, technology, and qualified instructors.</p>
+                
+                <p>The work of academic literacy facilitators today is not merely educational but deeply political - it represents a vital contribution to South Africa's ongoing project of epistemic justice and reconciliation. By transforming how knowledge is accessed and created, they help build a more equitable academic landscape that finally moves beyond apartheid's enduring educational legacy.</p>
             </div>
         </div>
     </main>
