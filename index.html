@@ -46,6 +46,7 @@
             overflow: hidden;
         }
         
+        /* Enhanced wave animation - faster and more prominent */
         .wave {
             position: absolute;
             bottom: 0;
@@ -54,7 +55,7 @@
             height: 100px;
             background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23091133'%3E%3C/path%3E%3C/svg%3E");
             background-size: 1200px 100px;
-            animation: wave 12s linear infinite;
+            animation: wave 6s linear infinite; /* Increased speed */
         }
         
         .wave::before {
@@ -66,13 +67,19 @@
             height: 100px;
             background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%230d1b42'%3E%3C/path%3E%3C/svg%3E");
             background-size: 1200px 100px;
-            animation: wave 10s linear infinite reverse;
+            animation: wave 5s linear infinite reverse; /* Increased speed */
             opacity: 0.5;
         }
         
         @keyframes wave {
             0% { background-position-x: 0; }
             100% { background-position-x: 1200px; }
+        }
+        
+        /* Added text glow pulse animation */
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.7); }
+            50% { text-shadow: 0 0 20px rgba(255, 255, 255, 1); }
         }
         
         h1 {
@@ -85,6 +92,7 @@
             padding: 0 20px;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
             letter-spacing: 1px;
+            animation: textGlow 3s ease-in-out infinite; /* Added glow pulse */
         }
         
         .header-subtitle {
@@ -97,6 +105,7 @@
             z-index: 2;
             padding: 0 20px;
             text-shadow: 0 0 8px rgba(230, 247, 255, 0.7);
+            animation: textGlow 4s ease-in-out infinite 0.5s; /* Slightly offset animation */
         }
         
         nav {
@@ -121,7 +130,6 @@
             font-weight: 600;
             padding: 12px 18px;
             border-radius: 8px;
-            transition: all 0.3s ease;
             text-shadow: 0 0 5px var(--aqua);
             border: 1px solid transparent;
             display: flex;
@@ -134,8 +142,6 @@
             color: var(--purple);
             text-shadow: 0 0 10px var(--purple);
             border: 1px solid var(--purple);
-            box-shadow: 0 0 15px var(--glow-color);
-            transform: translateX(5px);
         }
         
         main {
@@ -151,52 +157,14 @@
             gap: 25px;
         }
         
+        /* Simplified card styling - NO ANIMATIONS */
         .card {
             background: rgba(15, 25, 55, 0.95);
             padding: 20px;
             border-radius: 12px;
-            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             position: relative;
-            overflow: hidden;
-        }
-        
-        .card::before {
-            content: "";
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            z-index: -1;
-            background: linear-gradient(45deg, var(--aqua), var(--turquoise), var(--purple), var(--royal-blue), var(--aqua));
-            border-radius: 14px;
-            animation: border-glow 3s linear infinite;
-            background-size: 400%;
-        }
-        
-        @keyframes border-glow {
-            0% { 
-                background-position: 0% 50%; 
-                opacity: 0.7;
-            }
-            50% { 
-                background-position: 100% 50%; 
-                opacity: 1;
-            }
-            100% { 
-                background-position: 0% 50%; 
-                opacity: 0.7;
-            }
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .card:hover::before {
-            animation: border-glow 1.5s linear infinite;
         }
         
         h2 {
@@ -290,12 +258,10 @@
             color: white;
             font-size: 1.3rem;
             margin: 0 12px;
-            transition: all 0.3s ease;
         }
         
         .social-icons a:hover {
             color: var(--aqua);
-            transform: translateY(-3px);
         }
         
         .back-to-top {
@@ -313,12 +279,10 @@
             text-decoration: none;
             font-size: 1.3rem;
             box-shadow: 0 5px 15px rgba(147, 112, 219, 0.5);
-            transition: all 0.3s ease;
-            z-index: 99;
         }
         
         .back-to-top:hover {
-            transform: translateY(-5px) scale(1.1);
+            color: white;
             box-shadow: 0 8px 20px var(--glow-color);
         }
         
@@ -464,7 +428,7 @@
     </a>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth scrolling for navigation links (kept as it's functional, not visual animation)
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -498,25 +462,6 @@
                 top: 0,
                 behavior: 'smooth'
             });
-        });
-        
-        // Add subtle animation to cards when they come into view
-        const cards = document.querySelectorAll('.card');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        cards.forEach(card => {
-            card.style.opacity = 0;
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(card);
         });
     </script>
 </body>
